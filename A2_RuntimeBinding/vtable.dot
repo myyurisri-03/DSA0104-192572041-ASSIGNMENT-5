@@ -1,0 +1,12 @@
+digraph G { graph [bgcolor=white, fontname="Helvetica", dpi=200]; node [fontname="Helvetica", fontsize=14, color=black, fontcolor=black, shape=record, style=filled, fillcolor=white]; edge [color=black, fontname="Helvetica", fontsize=13]; rankdir=LR; nodesep=0.3; ranksep=0.6;
+ptr [label="b", shape=box];
+obj [label="OutPatient object|<v> vptr|patient|consultation|tests"];
+vto [label="vtable of OutPatient|<d> [0] ~OutPatient()|<t> [1] total()|<y> [2] type()"];
+vti [label="vtable of InPatient|[0] ~InPatient()|[1] total()|[2] type()"];
+vtb [label="vtable of Bill|[0] ~Bill()|[1] total() = 0|[2] type()"];
+code [label="OutPatient::total()|return consultation + tests;"];
+{rank=same; vto; vti; vtb;}
+ptr -> obj [label="points to"];
+obj:v -> vto:d [label="1. vptr"];
+vto:t -> code [label="2. slot [1]\n3. call"];
+}

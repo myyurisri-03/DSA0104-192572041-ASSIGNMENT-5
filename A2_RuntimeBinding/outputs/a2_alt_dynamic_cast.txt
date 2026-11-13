@@ -1,0 +1,6 @@
+$ g++ -std=c++17 -Wall -Wextra -O2 alt_dynamic_cast.cpp -o a2_alt_dynamic_cast
+$ ./a2_alt_dynamic_cast
+n = 2000000, k = 5 bill types
+dynamic_cast chain : 72.9531 ms (sum 3.37092e+10)
+virtual call       : 24.084 ms (sum 3.37092e+10)
+[exit code 0]
