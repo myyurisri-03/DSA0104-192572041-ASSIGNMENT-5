@@ -1,0 +1,7 @@
+$ g++ -std=c++17 -Wall -Wextra -O2 optional_bench.cpp -o b2_optional_bench
+$ ./b2_optional_bench
+bad%   optional(ms)   exception(ms)   sizeof(optional<double>)=16
+0      2.9062          2.83299          (rejected 0/0, sums 1e+08/1e+08)
+1      2.85686          15.3046          (rejected 10065/10065, sums 9.89935e+07/9.89935e+07)
+50      6.44216          630.903          (rejected 499300/499300, sums 5.007e+07/5.007e+07)
+[exit code 0]

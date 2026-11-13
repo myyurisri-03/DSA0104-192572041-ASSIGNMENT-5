@@ -1,0 +1,30 @@
+$ g++ -std=c++17 -Wall -Wextra -I../common error_tests.cpp -o b2_error_tests_plain
+$ ./b2_error_tests_plain
+1. Negative consultation charge
+   [~t1]
+   NegativeChargeError: negative consultation
+2. Claim above the cover
+   [~t2]
+   ClaimError: claim exceeds cover
+3. Unknown package code (government scheme has no ER rate)
+   [~t3]
+   UnknownPackageError: no package rate for ER
+4. Text where a number is expected
+   [~t4]
+   std::invalid_argument: stod
+5. Missing patient record
+   [~t5]
+   RecordNotFoundError: no record for P9
+6a. Impossible array length (bad_array_new_length, a std::bad_alloc)
+   [~t6a]
+   std::bad_alloc: std::bad_array_new_length
+6b. Memory allocation failure (8 TB request, normal build only)
+   [~t6b]
+   std::bad_alloc: std::bad_alloc
+7. Top-level catch(...) keeps the program running
+   [~inner]
+   [~outer]
+   catch(...) : unknown exception handled
+Program still running - normal work resumes.
+OP Ravi: 1700
+[exit code 0]

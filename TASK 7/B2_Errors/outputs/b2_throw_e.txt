@@ -1,0 +1,7 @@
+$ g++ -std=c++17 -Wall -Wextra -fsanitize=address -g b2_throw_e.cpp -o b2_throw_e
+$ ./b2_throw_e
+approved 40000
+audit: exceeds cover
+claim rejected: exceeds cover
+error: negative amount
+[exit code 0]
