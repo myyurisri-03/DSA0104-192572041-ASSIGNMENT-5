@@ -1,0 +1,8 @@
+digraph G { graph [bgcolor=white, fontname="Helvetica", dpi=200]; node [fontname="Helvetica", fontsize=14, color=black, fontcolor=black, shape=record, style=filled, fillcolor=white]; edge [color=black, fontname="Helvetica", fontsize=13]; rankdir=BT; nodesep=0.25; ranksep=0.7;
+Bill [label="{«abstract»\nBill|# patient : string|+ «virtual» ~Bill()\l+ «pure virtual» total() const\l+ «virtual» type() const\l+ print() const\l+ patientName() const\l}"];
+OP [label="{OutPatient|- consultation : double\l- tests : double\l|+ «override» total()\l+ «override» type()\l}"];
+IP [label="{InPatient|- days : int\l- perDay : double\l- surgery : double\l|+ «override» total()\l+ «override» type()\l}"];
+DC [label="{DayCare|- packagePrice : double\l|+ «override» total()\l+ «override» type()\l}"];
+ER [label="{Emergency|- base : double\l- hours : double\l- ratePerHour : double\l|+ «override» total()\l+ «override» type()\l}"];
+edge [arrowhead=empty];
+OP->Bill; IP->Bill; DC->Bill; ER->Bill; }
