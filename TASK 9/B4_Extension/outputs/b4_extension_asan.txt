@@ -1,0 +1,24 @@
+$ g++ -std=c++17 -Wall -Wextra -fsanitize=address -g -I../common extension.cpp -o b4_extension_asan
+$ ./b4_extension_asan
+ 1. OP x Self       -> 0.000000  PASS
+ 2. OP x Insurance  -> 1530.000000  PASS
+ 3. OP x Govt       -> 1000.000000  PASS
+ 4. IP x Self       -> 0.000000  PASS
+ 5. IP x Insurance  -> 40000.000000  PASS
+ 6. IP x Govt       -> 35000.000000  PASS
+ 7. DC x Self       -> 0.000000  PASS
+ 8. DC x Insurance  -> 27000.000000  PASS
+ 9. DC x Govt       -> 25000.000000  PASS
+10. ER x Self       -> 0.000000  PASS
+11. ER x Insurance  -> 4500.000000  PASS
+12. ER x Govt       -> 4000.000000  PASS
+13. MT x Self       -> 0.000000  PASS
+14. MT x Insurance  -> 40000.000000  PASS
+15. MT x Govt       -> UnknownPackageError caught: no package rate for MT  PASS
+16. OP x Corporate  -> 1360.000000  PASS
+17. IP x Corporate  -> 30000.000000  PASS
+18. DC x Corporate  -> 24000.000000  PASS
+19. ER x Corporate  -> 4000.000000  PASS
+20. MT x Corporate  -> 30000.000000  PASS
+Passed 20 / 20 (12 earlier tests + 7 new)
+[exit code 0]
