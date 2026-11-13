@@ -1,0 +1,8 @@
+digraph G { graph [bgcolor=white, fontname="Helvetica", dpi=200]; node [fontname="Helvetica", fontsize=14, color=black, fontcolor=black, shape=record, style=filled, fillcolor=white]; edge [color=black, fontname="Helvetica", fontsize=13]; rankdir=BT; nodesep=0.25; ranksep=0.7;
+Payer [label="{«abstract»\nPayer|+ «virtual» ~Payer()\l+ «pure virtual» amountCovered(Bill) : double\l+ «pure virtual» name() : string\l}"];
+SP [label="{SelfPay|+ amountCovered()\l+ name()\l}"];
+INS [label="{Insurance|- limit : double\l- copayPct : double\l|+ amountCovered()\l+ approveClaim(double)\l+ name()\l}"];
+GOV [label="{GovernmentScheme|- rates : map\l|+ amountCovered()\l+ name()\l}"];
+CORP [label="{CorporateTieUp (NEW)|- sharePct : double\l- ceiling : double\l|+ amountCovered()\l+ name()\l}", style="filled,dashed"];
+edge [arrowhead=empty];
+SP->Payer; INS->Payer; GOV->Payer; CORP->Payer [style=dashed]; }
