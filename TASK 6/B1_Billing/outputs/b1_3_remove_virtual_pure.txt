@@ -1,0 +1,11 @@
+$ g++ -std=c++17 -Wall -Wextra -fsanitize=address -g b1_3_remove_virtual_pure.cpp -o b1_3_remove_virtual_pure
+b1_3_remove_virtual_pure.cpp:12:12: error: initializer specified for non-virtual method 'double Bill::total() const'
+   12 |     double total() const = 0;
+      |            ^~~~~
+b1_3_remove_virtual_pure.cpp:27:12: error: 'double OutPatient::total() const' marked 'override', but does not override
+   27 |     double total() const override { return consultation + tests; }
+      |            ^~~~~
+b1_3_remove_virtual_pure.cpp:38:12: error: 'double InPatient::total() const' marked 'override', but does not override
+   38 |     double total() const override { return days * perDay + surgery; }
+      |            ^~~~~
+[compilation failed - as expected for this experiment, no program is produced]

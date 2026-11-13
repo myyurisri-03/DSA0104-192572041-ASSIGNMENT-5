@@ -1,0 +1,29 @@
+$ g++ -std=c++17 -Wall -Wextra -fsanitize=address -g b1_4_dtor_nonvirtual.cpp -o b1_4_dtor_nonvirtual
+b1_4_dtor_nonvirtual.cpp: In function 'int main()':
+b1_4_dtor_nonvirtual.cpp:9:72: warning: deleting object of abstract class type 'Bill' which has non-virtual destructor will cause undefined behavior [-Wdelete-non-virtual-dtor]
+    9 | int main() { Bill* b = new InPatient; std::cout << b->total() << '\n'; delete b; }
+      |                                                                        ^~~~~~~~
+$ ./b1_4_dtor_nonvirtual
+=================================================================
+==202==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x502000000010 in thread T0:
+  object passed to delete has wrong type:
+  size of the allocated type:   16 bytes;
+  size of the deallocated type: 8 bytes.
+    #0 0x7f938feff5e8 in operator delete(void*, unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:164
+    #1 0x55de2868b430 in main /home/claude/repo/B1_Billing/b1_4_dtor_nonvirtual.cpp:9
+    #2 0x7f938f62a1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: a4a7992a8e66555c8141ab2a08a8465ff6e0ea65)
+    #3 0x7f938f62a28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: a4a7992a8e66555c8141ab2a08a8465ff6e0ea65)
+    #4 0x55de2868b2a4 in _start (/tmp/b1_4_dtor_nonvirtual+0x22a4) (BuildId: f94cbfe946fe3189743864939ca55c2222093e8c)
+
+0x502000000010 is located 0 bytes inside of 16-byte region [0x502000000010,0x502000000020)
+allocated by thread T0 here:
+    #0 0x7f938fefe548 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:95
+    #1 0x55de2868b383 in main /home/claude/repo/B1_Billing/b1_4_dtor_nonvirtual.cpp:9
+    #2 0x7f938f62a1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: a4a7992a8e66555c8141ab2a08a8465ff6e0ea65)
+    #3 0x7f938f62a28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: a4a7992a8e66555c8141ab2a08a8465ff6e0ea65)
+    #4 0x55de2868b2a4 in _start (/tmp/b1_4_dtor_nonvirtual+0x22a4) (BuildId: f94cbfe946fe3189743864939ca55c2222093e8c)
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch ../../../../src/libsanitizer/asan/asan_new_delete.cpp:164 in operator delete(void*, unsigned long)
+==202==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+==202==ABORTING
+[exit code 1]

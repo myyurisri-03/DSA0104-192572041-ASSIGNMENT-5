@@ -1,0 +1,18 @@
+$ g++ -std=c++17 -Wall -Wextra -fsanitize=address -g -I../common billing_full.cpp -o b1_full_billing
+$ ./b1_full_billing
+Type Patient   Total      Payer      Covered    PatientPays  Check
+OP   Ravi        1700.00  Self            0.00      1700.00  PASS
+OP   Ravi        1700.00  Insurance    1530.00       170.00  PASS
+OP   Ravi        1700.00  Govt         1000.00       700.00  PASS
+IP   Meena      47500.00  Self            0.00     47500.00  PASS
+IP   Meena      47500.00  Insurance   40000.00      7500.00  PASS
+IP   Meena      47500.00  Govt        35000.00     12500.00  PASS
+DC   Arun       30000.00  Self            0.00     30000.00  PASS
+DC   Arun       30000.00  Insurance   27000.00      3000.00  PASS
+DC   Arun       30000.00  Govt        25000.00      5000.00  PASS
+ER   Latha       5000.00  Self            0.00      5000.00  PASS
+ER   Latha       5000.00  Insurance    4500.00       500.00  PASS
+ER   Latha       5000.00  Govt         4000.00      1000.00  PASS
+Day total = 84200.00 (hand: 84200.00)
+Passed 12 / 12
+[exit code 0]
