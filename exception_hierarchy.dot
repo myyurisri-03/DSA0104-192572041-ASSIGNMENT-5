@@ -1,0 +1,7 @@
+digraph G { graph [bgcolor=white, fontname="Helvetica", dpi=200]; node [fontname="Helvetica", fontsize=11, color=black, fontcolor=black]; edge [color=black, fontname="Helvetica", fontsize=10]; rankdir=TB; nodesep=0.3;
+node [shape=box, style=filled, fillcolor=white];
+E [label="std::exception"]; R [label="std::runtime_error"]; L [label="std::logic_error"];
+IA [label="std::invalid_argument"]; OR [label="std::out_of_range"]; BA [label="std::bad_alloc"];
+B [label="BillingError", penwidth=2];
+N [label="NegativeChargeError"]; C [label="ClaimError"]; U [label="UnknownPackageError"]; RN [label="RecordNotFoundError"];
+E->R; E->L; E->BA; L->IA; L->OR; R->B; B->N; B->C; B->U; B->RN; }
