@@ -1,0 +1,15 @@
+$ g++ -std=c++17 -Wall -Wextra -O2 bench.cpp -o b3_bench
+$ ./b3_bench
+sizeof: VOP=24 VIP=32 VDC=16 VER=32 | SBill=32 | variant=32 (POP=16 PIP=24 PDC=8 PER=24)
+
+Total time for one pass over n bills (best of several runs), -O2
+n           virtual(ms)   switch(ms)  variant(ms)   per-type(ms)
+1000              0.002        0.001        0.001          0.001   sums agree
+1000000          11.162        8.251        8.618          1.976   sums agree
+10000000        107.187       75.802       75.650         15.866   sums agree
+
+invalid%  return codes (ms)    exceptions (ms)      ratio
+0                     2.079              1.993       1.0x   (invalid found 0 / 0)
+1                     2.823             12.575       4.5x   (invalid found 9979 / 9979)
+50                    5.421            358.163      66.1x   (invalid found 500163 / 500163)
+[exit code 0]
