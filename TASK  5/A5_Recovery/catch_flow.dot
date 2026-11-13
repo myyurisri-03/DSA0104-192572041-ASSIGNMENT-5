@@ -1,0 +1,7 @@
+digraph G { graph [bgcolor=white, fontname="Helvetica", dpi=200]; node [fontname="Helvetica", fontsize=11, color=black, fontcolor=black]; edge [color=black, fontname="Helvetica", fontsize=10]; rankdir=TB; nodesep=0.4;
+node [shape=box, style=filled, fillcolor=white];
+V [label="Layer 1 - Bill / Payer constructors and\nPayer::amountCovered  (THROW)\nNegativeChargeError, UnknownPackageError"];
+S [label="Layer 2 - settle() / BillingService\n(CATCH specific, LOG, then  throw;  RETHROW)\nClaimError, UnknownPackageError"];
+M [label="Layer 3 - main() / top-level handler\n(CATCH, REPORT to the user, continue with next bill)\ncatch(BillingError&)  catch(std::exception&)  catch(...)"];
+R [label="Resources: RAII objects (unique_ptr, vector, string)\nreleased automatically during stack unwinding", shape=note];
+V->S [label="exception propagates"]; S->M [label="same exception object"]; R->S [style=dashed, arrowhead=none]; }
